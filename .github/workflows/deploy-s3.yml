@@ -1,1 +1,41 @@
 
+name: Deploy Website to AWS S3
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy Website
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Validate Website
+        run: |
+          test -s website/index.html
+          grep -qi '<html' website/index.html
+          grep -qi '</html>' website/index.html
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::744264411446:role/GitHubActionsS3DeployRole
+          aws-region: ap-south-1
+
+      - name: Deploy Website to S3
+        run: |
+          aws s3 sync website/ \
+            s3://yash-devops-cicd-2026-unique/ \
+            --exclude "*" \
+            --include "*.html" \
+          
