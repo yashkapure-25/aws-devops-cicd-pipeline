@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Validate Website
         run: |
@@ -27,7 +27,7 @@ jobs:
           grep -qi '</html>' website/index.html
 
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: arn:aws:iam::744264411446:role/GitHubActionsS3DeployRole
           aws-region: ap-south-1
@@ -38,4 +38,9 @@ jobs:
             s3://yash-devops-cicd-2026-unique/ \
             --exclude "*" \
             --include "*.html" \
-          
+            --include "*.css" \
+            --include "*.js" \
+            --include "*.png" \
+            --include "*.jpg" \
+            --include "*.jpeg" \
+            --include "*.svg"
