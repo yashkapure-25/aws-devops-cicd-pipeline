@@ -1,4 +1,4 @@
-# AWS DevOps & CI/CD — Module 06
+# AWS DevOps & CI/CD
 
 **Learning Program:** Codomax Digital Solutions  
 **Duration:** Day 25 – Day 27  
