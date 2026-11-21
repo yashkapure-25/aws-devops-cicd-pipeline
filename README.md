@@ -1,7 +1,6 @@
 # AWS DevOps & CI/CD
 
 **Learning Program:** Codomax Digital Solutions  
-**Duration:** Day 25 – Day 27  
 **Topic:** Git, GitHub, Version Control, Continuous Integration, Continuous Deployment, and AWS DevOps
 
 ## Project Overview
